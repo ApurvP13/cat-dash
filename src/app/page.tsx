@@ -18,36 +18,44 @@ import { useState } from "react";
 import { AddMockDialog } from "@/components/add-mocks";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useLocalStorage } from "@/hooks/use-local-storage";
+import { MockTest, SectionalTest } from "@/types/mock-test";
+import { toast } from "sonner";
 
 export default function Home() {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [mockTests, setMockTests] = useLocalStorage<MockTest[]>(
+    "cat-mock-tests",
+    []
+  );
+  const [sectionalTests, setSectionalTests] = useLocalStorage<SectionalTest[]>(
+    "cat-sectional-tests",
+    []
+  );
 
-  const handleAddMock = () => {
-    console.log("mock added");
-    // const newMock: MockTest = {
-    //   ...mockTest,
-    //   id: Date.now().toString(),
-    // }
-    // setMockTests([...mockTests, newMock])
+  const handleAddMock = (mockTest: Omit<MockTest, "id">) => {
+    const newMock: MockTest = {
+      ...mockTest,
+      id: Date.now().toString(),
+    };
+    setMockTests((prev) => [...prev, newMock]);
 
-    // toast({
-    //   title: "Mock Test Added",
-    //   description: `${mockTest.name} has been successfully added to your tracker.`,
-    // })
+    toast("Mock Test Added", {
+      description: `${mockTest.name} has been successfully added to your tracker.`,
+    });
   };
 
-  const handleAddSectional = () => {
-    console.log("sectional added");
-    // const newMock: MockTest = {
-    //   ...mockTest,
-    //   id: Date.now().toString(),
-    // }
-    // setMockTests([...mockTests, newMock])
+  const handleAddSectional = (sectionalTest: Omit<SectionalTest, "id">) => {
+    const newSectional: SectionalTest = {
+      ...sectionalTest,
+      id: Date.now().toString(),
+    };
 
-    // toast({
-    //   title: "Mock Test Added",
-    //   description: `${mockTest.name} has been successfully added to your tracker.`,
-    // })
+    setSectionalTests((prev) => [...prev, newSectional]);
+
+    toast("Sectional Test Added", {
+      description: `${sectionalTest.name} has been successfully added to your tracker.`,
+    });
   };
 
   return (
@@ -66,9 +74,9 @@ export default function Home() {
         <StatCards
           title={"Predicted Percentile"}
           value={99.84}
-          subtitle={"+0.4 as of last 5 scores"}
+          subtitle={"Using CAT 2024 data"}
           icon={Calculator}
-          trend="up"
+          trend="neutral"
         />
         <StatCards
           title={"VARC Average"}
