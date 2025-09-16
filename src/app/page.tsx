@@ -1,10 +1,55 @@
+"use client";
+
+import DataTable from "@/components/data-table";
 import Header from "@/components/header";
 import { SectionalChart } from "@/components/section-chart";
 import StatCards from "@/components/stat-cards";
 import { TotalChart } from "@/components/total-chart";
-import { Calculator, ChartSpline } from "lucide-react";
+import { Calculator, ChartSpline, Plus } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { useState } from "react";
+import { AddMockDialog } from "@/components/add-mocks";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+
+  const handleAddMock = () => {
+    console.log("mock added");
+    // const newMock: MockTest = {
+    //   ...mockTest,
+    //   id: Date.now().toString(),
+    // }
+    // setMockTests([...mockTests, newMock])
+
+    // toast({
+    //   title: "Mock Test Added",
+    //   description: `${mockTest.name} has been successfully added to your tracker.`,
+    // })
+  };
+
+  const handleAddSectional = () => {
+    console.log("sectional added");
+    // const newMock: MockTest = {
+    //   ...mockTest,
+    //   id: Date.now().toString(),
+    // }
+    // setMockTests([...mockTests, newMock])
+
+    // toast({
+    //   title: "Mock Test Added",
+    //   description: `${mockTest.name} has been successfully added to your tracker.`,
+    // })
+  };
+
   return (
     <div className="w-full h-full flex flex-col gap-6 p-4">
       {/* Header */}
@@ -54,7 +99,40 @@ export default function Home() {
       </div>
 
       {/* rows of mock data */}
-      <div className=""></div>
+      <div className="w-full">
+        <Card className="">
+          <CardHeader>
+            <CardTitle>CAT Mocks</CardTitle>
+            <CardDescription>Data of the current mocks given.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DataTable />
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Floating Action Button */}
+      <motion.div
+        className="fixed bottom-6 right-6"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <Button
+          size="lg"
+          className="rounded-full h-14 w-14 shadow-lg"
+          onClick={() => setIsAddDialogOpen(true)}
+        >
+          <Plus className="h-6 w-6" />
+        </Button>
+      </motion.div>
+
+      {/* Add Mock Dialog */}
+      <AddMockDialog
+        open={isAddDialogOpen}
+        onOpenChange={setIsAddDialogOpen}
+        onAddMock={handleAddMock}
+        onAddSectional={handleAddSectional}
+      />
     </div>
   );
 }

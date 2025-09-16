@@ -31,7 +31,7 @@ const StatCards: React.FC<StatCardProps> = ({
 
   return (
     <div
-      className={`flex-1 min-w-0 border ring-1 ring-black/1 bg-gradient-to-b from-neutral-100 to-neutral-300 dark:from-neutral-900 dark:to-neutral-800 border-neutral-100 rounded-xl flex flex-col p-4 gap-4 items-start text-neutral-800 dark:text-neutral-100 dark:border-neutral-800 ${className}`}
+      className={`flex-1 min-w-0 border ring-1 ring-black/1 bg-gradient-to-b from-neutral-200 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800 border-neutral-100 rounded-xl flex flex-col p-4 gap-4 items-start text-neutral-800 dark:text-neutral-100 dark:border-neutral-800 ${className}`}
     >
       {/* title and icon */}
       <div className="flex gap-2 items-center justify-between w-full font-normal font-sans">
