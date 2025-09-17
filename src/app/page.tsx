@@ -4,7 +4,7 @@ import DataTable from "@/components/data-table";
 import Header from "@/components/header";
 import { SectionalChart } from "@/components/section-chart";
 import StatCards from "@/components/stat-cards";
-import { TotalChart } from "@/components/total-chart";
+import TotalChart from "@/components/total-chart";
 import { Calculator, ChartSpline, Plus } from "lucide-react";
 import {
   Card,
@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { useLocalStorage } from "@/hooks/use-local-storage";
 import { MockTest, SectionalTest } from "@/types/mock-test";
 import { toast } from "sonner";
+import StatCardSection from "@/components/stat-card-section";
 
 export default function Home() {
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
@@ -63,7 +64,7 @@ export default function Home() {
       {/* Header */}
       <Header />
       {/* Stat cards flex */}
-      <div className="flex gap-4 w-full">
+      {/* <div className="flex gap-4 w-full">
         <StatCards
           title={"Current Average"}
           value={104.2}
@@ -99,11 +100,12 @@ export default function Home() {
           icon={ChartSpline}
           trend="up"
         />
-      </div>
+      </div> */}
+      <StatCardSection mockTests={mockTests} sectionalTests={sectionalTests} />
       {/* Charts for total and sections */}
       <div className="w-full flex gap-4">
-        <TotalChart />
-        <SectionalChart />
+        <TotalChart mockTests={mockTests} />
+        <SectionalChart sectionalTests={sectionalTests} />
       </div>
 
       {/* rows of mock data */}
@@ -114,7 +116,12 @@ export default function Home() {
             <CardDescription>Data of the current mocks given.</CardDescription>
           </CardHeader>
           <CardContent>
-            <DataTable />
+            <DataTable
+              mockTests={mockTests}
+              setMockTests={setMockTests}
+              sectionalTests={sectionalTests}
+              setSectionalTests={setSectionalTests}
+            />
           </CardContent>
         </Card>
       </div>
