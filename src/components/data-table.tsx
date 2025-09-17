@@ -281,8 +281,8 @@ const DataTable: React.FC<DataTableProps> = ({
                           Delete {isMockTest(test) ? "Mock" : "Sectional"} Test
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                          Are you sure you want to delete "{test.name}"? This
-                          action cannot be undone.
+                          Are you sure you want to delete &quot;{test.name}
+                          &quot;? This action cannot be undone.
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
