@@ -144,7 +144,7 @@ export function AddMockDialog({
     }
 
     const score = Number(sectionalData.score);
-    const maxScores = { VARC: 72, DILR: 60, QA: 66 };
+    const maxScores = { VARC: 72, DILR: 66, QA: 66 };
     const maxScore = maxScores[sectionalData.section as keyof typeof maxScores];
 
     if (score < 0 || score > maxScore) {
@@ -435,11 +435,11 @@ export function AddMockDialog({
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label>DILR Score * (0-60)</Label>
+                    <Label>DILR Score * (0-66)</Label>
                     <Input
                       type="number"
                       min="0"
-                      max="60"
+                      max="66"
                       placeholder="e.g., 45"
                       value={fullMockData.dilrScore}
                       onChange={(e) =>
