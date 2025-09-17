@@ -349,7 +349,7 @@ export function AddMockDialog({
                       type="number"
                       min="0"
                       max="204"
-                      placeholder="e.g., 180"
+                      placeholder="e.g., 125"
                       value={fullMockData.overallScore}
                       onChange={(e) =>
                         handleFullMockChange("overallScore", e.target.value)
@@ -364,7 +364,7 @@ export function AddMockDialog({
                       min="0"
                       max="100"
                       step="0.01"
-                      placeholder="e.g., 85.5"
+                      placeholder="e.g., 99.5"
                       value={fullMockData.overallPercentile}
                       onChange={(e) =>
                         handleFullMockChange(
@@ -411,7 +411,7 @@ export function AddMockDialog({
                       min="0"
                       max="100"
                       step="0.01"
-                      placeholder="e.g., 80.5"
+                      placeholder="e.g., 99.9"
                       value={fullMockData.varcPercentile}
                       onChange={(e) =>
                         handleFullMockChange("varcPercentile", e.target.value)
@@ -455,7 +455,7 @@ export function AddMockDialog({
                       min="0"
                       max="100"
                       step="0.01"
-                      placeholder="e.g., 75.2"
+                      placeholder="e.g., 99.2"
                       value={fullMockData.dilrPercentile}
                       onChange={(e) =>
                         handleFullMockChange("dilrPercentile", e.target.value)
@@ -499,7 +499,7 @@ export function AddMockDialog({
                       min="0"
                       max="100"
                       step="0.01"
-                      placeholder="e.g., 90.1"
+                      placeholder="e.g., 99.1"
                       value={fullMockData.qaPercentile}
                       onChange={(e) =>
                         handleFullMockChange("qaPercentile", e.target.value)
@@ -616,7 +616,7 @@ export function AddMockDialog({
                         sectionalData.section === "VARC"
                           ? "72"
                           : sectionalData.section === "DILR"
-                          ? "60"
+                          ? "66"
                           : "66"
                       }`}
                       value={sectionalData.score}
@@ -633,7 +633,7 @@ export function AddMockDialog({
                       min="0"
                       max="100"
                       step="0.01"
-                      placeholder="e.g., 85.5"
+                      placeholder="e.g., 99.5"
                       value={sectionalData.percentile}
                       onChange={(e) =>
                         handleSectionalChange("percentile", e.target.value)
